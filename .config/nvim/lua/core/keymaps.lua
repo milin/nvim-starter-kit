@@ -68,6 +68,8 @@ keymap.set('n', '<leader>fs', require('telescope.builtin').current_buffer_fuzzy_
 keymap.set('n', '<leader>fo', require('telescope.builtin').lsp_document_symbols, {})
 keymap.set('n', '<leader>fi', require('telescope.builtin').lsp_incoming_calls, {})
 keymap.set('n', '<leader>ch', require('telescope.builtin').command_history, {})
+keymap.set('n', '<leader>cs', require('telescope.builtin').colorscheme, {})
+keymap.set('n', '<leader>tt', ":Telescope aerial<CR>")
 keymap.set('n', '<leader>fm', function() require('telescope.builtin').treesitter({default_text=":method:"}) end)
 keymap.set('n', '<space>*', require('telescope.builtin').grep_string, {})
 
@@ -88,7 +90,7 @@ keymap.set("n", "<leader>h8", function() require("harpoon.ui").nav_file(8) end)
 keymap.set("n", "<leader>h9", function() require("harpoon.ui").nav_file(9) end)
 
 -- Vim REST Console
-keymap.set("n", "<leader>xr", ":call VrcQuery()<CR>") -- Run REST query
+keymap.set("n", "<leader>fr", ":call VrcQuery()<CR>") -- Run REST query
 
 -- LSP
 keymap.set('n', '<leader>gg', '<cmd>lua vim.lsp.buf.hover()<CR>')

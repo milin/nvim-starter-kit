@@ -10,6 +10,7 @@ return {
     'theHamsta/nvim-dap-virtual-text', -- inline variable text while debugging
     -- https://github.com/nvim-telescope/telescope-dap.nvim
     'nvim-telescope/telescope-dap.nvim', -- telescope integration with dap
+    'nvim-neotest/nvim-nio',
   },
   opts = {
     controls = {
@@ -116,6 +117,22 @@ return {
         request = "attach",
         hostName = "127.0.0.1",
         port = 5005,
+      },
+      {
+        name = "Debug (Attach) - eps",
+        type = "java",
+        request = "attach",
+        hostName = "localhost",
+        vmArgs = '-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:16443',
+        port = 16443,
+      },
+      {
+        name = "Debug (Attach) - demandservices",
+        type = "java",
+        request = "attach",
+        hostName = "localhost",
+        vmArgs = '-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:4055',
+        port = 4055,
       },
       {
         name = "Debug (Attach) - wps",

@@ -61,7 +61,7 @@ local config = {
           },
           {
             name = "JavaSE-17",
-            path = "/usr/bin/java",
+            path = "/etc/alternatives/java_sdk_17_openjdk/",
           },
         }
       },
