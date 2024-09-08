@@ -122,7 +122,7 @@ return {
         name = "Debug (Attach) - eps",
         type = "java",
         request = "attach",
-        hostName = "localhost",
+        hostName = "mshakya-exp.sleds.dev.tripadvisor.com",
         vmArgs = '-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:16443',
         port = 16443,
       },
