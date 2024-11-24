@@ -45,8 +45,7 @@ opt.splitbelow = true
 -- Consider - as part of keyword
 opt.iskeyword:append("-")
 
--- Disable the mouse while in nvim
-opt.mouse = ""
+opt.mouse = "a"
 
 -- Folding
 opt.foldlevel = 20

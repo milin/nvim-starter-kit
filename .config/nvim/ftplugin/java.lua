@@ -5,11 +5,11 @@ local workspace_dir = vim.env.HOME .. '/jdtls-workspace/' .. project_name
 
 -- Needed for debugging
 local bundles = {
-  vim.fn.glob(vim.env.HOME .. '/.local/share/nvim/mason/share/java-debug-adapter/com.microsoft.java.debug.plugin.jar'),
+  vim.fn.glob(vim.env.HOME .. '/.local/share/vimilin/mason/share/java-debug-adapter/com.microsoft.java.debug.plugin.jar'),
 }
 
 -- Needed for running/debugging unit tests
-vim.list_extend(bundles, vim.split(vim.fn.glob(vim.env.HOME .. "/.local/share/nvim/mason/share/java-test/*.jar", 1), "\n"))
+vim.list_extend(bundles, vim.split(vim.fn.glob(vim.env.HOME .. "/.local/share/vimilin/mason/share/java-test/*.jar", 1), "\n"))
 
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local config = {
@@ -22,16 +22,16 @@ local config = {
     '-Declipse.product=org.eclipse.jdt.ls.core.product',
     '-Dlog.protocol=true',
     '-Dlog.level=ALL',
-    '-javaagent:' .. vim.env.HOME .. '/.local/share/nvim/mason/share/jdtls/lombok.jar',
+    '-javaagent:' .. vim.env.HOME .. '/.local/share/vimilin/mason/share/jdtls/lombok.jar',
     '-Xmx4g',
     '--add-modules=ALL-SYSTEM',
     '--add-opens', 'java.base/java.util=ALL-UNNAMED',
     '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
 
     -- Eclipse jdtls location
-    '-jar', vim.env.HOME .. '/.local/share/nvim/mason/share/jdtls/plugins/org.eclipse.equinox.launcher.jar',
+    '-jar', vim.env.HOME .. '/.local/share/vimilin/mason/share/jdtls/plugins/org.eclipse.equinox.launcher.jar',
     -- TODO Update this to point to the correct jdtls subdirectory for your OS (config_linux, config_mac, config_win, etc)
-    '-configuration', vim.env.HOME .. '/.local/share/nvim/mason/packages/jdtls/config_linux',
+    '-configuration', vim.env.HOME .. '/.local/share/vimilin/mason/packages/jdtls/config_mac',
     '-data', workspace_dir
   },
 
@@ -44,7 +44,7 @@ local config = {
   settings = {
     java = {
       -- TODO Replace this with the absolute path to your main java version (JDK 17 or higher)
-      home = '/usr/lib/jvm/java-17-amazon-corretto',
+      home = '/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home',
       eclipse = {
         downloadSources = true,
       },
@@ -54,9 +54,8 @@ local config = {
         -- The runtime name parameters need to match specific Java execution environments.  See https://github.com/tamago324/nlsp-settings.nvim/blob/2a52e793d4f293c0e1d61ee5794e3ff62bfbbb5d/schemas/_generated/jdtls.json#L317-L334
         runtimes = {
           {
-            name = "JavaSE-11",
-            path = "/usr/jdk11/",
-          },
+            name = "JavaSE-17",
+            path  = "/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home"
         }
       },
       maven = {
@@ -122,7 +121,7 @@ local config = {
     bundles = bundles
   },
 }
-
+}
 -- Needed for debugging
 config['on_attach'] = function(client, bufnr)
   jdtls.setup_dap({ hotcodereplace = 'auto' })
