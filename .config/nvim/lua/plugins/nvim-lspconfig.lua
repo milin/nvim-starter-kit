@@ -39,9 +39,9 @@ return {
         'lemminx',
         'marksman',
         'quick_lint_js',
-        'typescript-language-server',
-        'python-lsp-server',
+        'pylsp',
         'yamlls',
+        'ts_ls',
       }
     })
 

@@ -75,6 +75,8 @@ keymap.set('n', '<space>*', require('telescope.builtin').grep_string, {})
 
 -- Git-blame
 keymap.set("n", "<leader>gb", ":GitBlameToggle<CR>") -- toggle git blame
+-- LazyGit
+keymap.set("n", "<leader>gg", ":LazyGit<CR>") 
 
 -- Harpoon
 keymap.set("n", "<leader>ha", require("harpoon.mark").add_file)
@@ -93,7 +95,7 @@ keymap.set("n", "<leader>h9", function() require("harpoon.ui").nav_file(9) end)
 keymap.set("n", "<leader>fr", ":call VrcQuery()<CR>") -- Run REST query
 
 -- LSP
-keymap.set('n', '<leader>gg', '<cmd>lua vim.lsp.buf.hover()<CR>')
+keymap.set('n', '<leader>gh', '<cmd>lua vim.lsp.buf.hover()<CR>')
 keymap.set('n', '<leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
 keymap.set('n', '<leader>gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
 keymap.set('n', '<leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')

@@ -11,13 +11,14 @@ return {
      window = {
       filesystem = {
         follow_current_file = {
-          enabled=true,
+          enabled=false,
           leave_dirs_open=true
-        }
+        },
+        bind_to_cwd=false,
       },
       buffers = {
         follow_current_file = {
-          enabled=true,
+          enabled=false,
           leave_dirs_open=true
         }
       },
