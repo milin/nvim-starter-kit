@@ -40,8 +40,6 @@ luac.out
 *.hex
 
 
-# Session stuff
-.config/nvim/session/*
 
 # Random
 Session.vim
