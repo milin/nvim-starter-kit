@@ -52,4 +52,7 @@ opt.mouse = "a"
 opt.foldlevel = 20
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()" -- Utilize Treesitter folds
-vim.diagnostic.config({ virtual_text = false })
+vim.diagnostic.config({
+  virtual_text = false,
+  update_in_insert = false
+})
