@@ -53,3 +53,7 @@ opt.foldlevel = 20
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()" -- Utilize Treesitter folds
 -- vim.g.root_spec = { "cwd" }
+vim.diagnostic.config({
+  virtual_text = false,
+  update_in_insert = false
+})

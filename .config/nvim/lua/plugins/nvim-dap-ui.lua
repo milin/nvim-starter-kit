@@ -138,7 +138,7 @@ return {
         name = "Debug (Attach) - wps",
         type = "java",
         request = "attach",
-        hostName = "mshakya-exp.sleds.dev.tripadvisor.com",
+        hostName = "mshakya-trshakya.sleds.dev.tripadvisor.com",
         vmArgs = '-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:17755',
         port = 17755,
       },
