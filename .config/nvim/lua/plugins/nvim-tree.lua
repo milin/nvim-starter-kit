@@ -15,11 +15,12 @@ return {
           leave_dirs_open=true
         },
         bind_to_cwd=false,
+        hijack_netrw_behavior = "disabled",
       },
       buffers = {
         follow_current_file = {
           enabled=false,
-          leave_dirs_open=true
+          leave_dirs_open=true,
         }
       },
       mappings = { ["P"] = {
