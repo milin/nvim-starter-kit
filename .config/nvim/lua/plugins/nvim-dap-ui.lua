@@ -104,6 +104,13 @@ return {
       -- Commented to prevent DAP UI from closing when unit tests finish
       -- require('dapui').close()
     end
+    dap.configurations.python ={{
+      type = 'python',
+      request = 'launch',
+      name = 'My custom launch configuration',
+      program = '${file}',
+      -- ... more options, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings
+    }}
 
     -- Add dap configurations based on your language/adapter settings
     -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
