@@ -33,7 +33,7 @@ local config = {
     -- Eclipse jdtls location
     '-jar', vim.env.HOME .. share_dir .. 'mason/share/jdtls/plugins/org.eclipse.equinox.launcher.jar',
     -- TODO Update this to point to the correct jdtls subdirectory for your OS (config_linux, config_mac, config_win, etc)
-    '-configuration', vim.env.HOME .. share_dir .. 'mason/packages/jdtls/config_linux',
+    '-configuration', vim.env.HOME .. share_dir .. 'mason/packages/jdtls/config_mac',
     '-data', workspace_dir
   },
 
@@ -46,7 +46,7 @@ local config = {
   settings = {
     java = {
       -- TODO Replace this with the absolute path to your main java version (JDK 17 or higher)
-      home = '/etc/alternatives/java_sdk_17_openjdk/',
+      home = vim.env.JAVA_HOME,
       eclipse = {
         downloadSources = true,
       },

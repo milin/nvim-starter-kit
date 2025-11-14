@@ -12,9 +12,40 @@ return {
   auto_suggestions_provider = "claude",
   claude = {
     endpoint = "https://api.anthropic.com",
-    model = "claude-3-5-sonnet-20241022",
+    model = "claude-sonnet-4-20250514",
     temperature = 0,
     max_tokens = 4096,
+  },
+  windows = {
+    ---@type "right" | "left" | "top" | "bottom"
+    position = "right", -- the position of the sidebar
+    wrap = true, -- similar to vim.o.wrap
+    width = 30, -- default % based on available width
+    sidebar_header = {
+      enabled = true, -- true, false to enable/disable the header
+      align = "center", -- left, center, right for title
+      rounded = true,
+    },
+    spinner = {
+      editing = { "⡀", "⠄", "⠂", "⠁", "⠈", "⠐", "⠠", "⢀", "⣀", "⢄", "⢂", "⢁", "⢈", "⢐", "⢠", "⣠", "⢤", "⢢", "⢡", "⢨", "⢰", "⣰", "⢴", "⢲", "⢱", "⢸", "⣸", "⢼", "⢺", "⢹", "⣹", "⢽", "⢻", "⣻", "⢿", "⣿" },
+      generating = { "·", "✢", "✳", "∗", "✻", "✽" }, -- Spinner characters for the 'generating' state
+      thinking = { "🤯", "🙄" }, -- Spinner characters for the 'thinking' state
+    },
+    input = {
+      prefix = "> ",
+      height = 8, -- Height of the input window in vertical layout
+    },
+    edit = {
+      border = "rounded",
+      start_insert = true, -- Start insert mode when opening the edit window
+    },
+    ask = {
+      floating = true, -- Open the 'AvanteAsk' prompt in a floating window
+      start_insert = true, -- Start insert mode when opening the ask window
+      border = "rounded",
+      ---@type "ours" | "theirs"
+      focus_on_apply = "ours", -- which diff to focus after applying
+    },
   },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
