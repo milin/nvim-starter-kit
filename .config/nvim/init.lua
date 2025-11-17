@@ -14,7 +14,6 @@ vim.opt.rtp:prepend(lazypath)
 
 -- This has to be set before initializing lazy
 vim.g.mapleader = " "
-
 -- Initialize lazy with dynamic loading of anything in the plugins directory
 require("lazy").setup("plugins", {
    change_detection = {
@@ -22,6 +21,10 @@ require("lazy").setup("plugins", {
     notify = false, -- turn off notifications whenever plugin changes are made
   },
 })
+vim.opt.shellcmdflag = '-ci'
+vim.g.mason_python = "/Users/milindshakya/.pyenv/shims/python"
+
+
 
 -- These modules are not loaded by lazy
 require("core.options")

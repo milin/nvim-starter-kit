@@ -1,7 +1,7 @@
 return {
-"tpope/vim-rhubarb",
- opts = {
-  -- Refer to the configuration section below
-  -- or leave empty for defaults
- },
+  "tpope/vim-rhubarb",
+  config = function()
+    -- optional settings (usually none needed)
+  end,
 }
+
