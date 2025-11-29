@@ -17,6 +17,8 @@ return {
     ensure_installed = {
       'lua',
       'comment',
+      'markdown',
+      'markdown_inline',
     },
   },
   config = function (_, opts)
