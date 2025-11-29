@@ -25,29 +25,6 @@ vim.opt.shellcmdflag = '-ci'
 vim.g.mason_python = "/Users/milindshakya/.pyenv/shims/python"
 
 
-local function applyFoldsAndThenCloseAllFolds(bufnr, providerName)
-    require('async')(function()
-        bufnr = bufnr or vim.api.nvim_get_current_buf()
-        -- make sure buffer is attached
-        require('ufo').attach(bufnr)
-        -- getFolds return Promise if providerName == 'lsp'
-        local ok, ranges = pcall(await, require('ufo').getFolds(bufnr, providerName))
-        if ok and ranges then
-            ok = require('ufo').applyFolds(bufnr, ranges)
-        end
-    end)
-end
-
-
-vim.api.nvim_create_autocmd('BufRead', {
-        pattern = '*',
-        callback = function(e)
-            applyFoldsAndThenCloseAllFolds(e.buf, 'treesitter')
-        end
-    })
-
-
-
 -- These modules are not loaded by lazy
 require("core.options")
 require("core.keymaps")
