@@ -16,7 +16,7 @@ keymap.set("n", "<f9>", ":noh<CR>") -- Clear selection
 
 
 -- java
-keymap.set("n", "ss", ":TermExec cmd='/usr/jdk11/bin/jshell'<CR>") -- ToggleTerm Jshell 
+-- keymap.set("n", "ss", ":TermExec cmd='/usr/jdk11/bin/jshell'<CR>") -- ToggleTerm Jshell 
 
 -- Split window management
 keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically
@@ -49,6 +49,8 @@ keymap.set("n", "<leader>qn", ":cnext<CR>") -- jump to next quickfix list item
 keymap.set("n", "<leader>qp", ":cprev<CR>") -- jump to prev quickfix list item
 keymap.set("n", "<leader>ql", ":clast<CR>") -- jump to last quickfix list item
 keymap.set("n", "<leader>qc", ":cclose<CR>") -- close quickfix list
+
+keymap.set("n", "<leader>rg", ":RnvimrToggle<CR>") 
 
 -- Vim-maximizer
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle maximize tab
