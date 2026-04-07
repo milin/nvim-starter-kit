@@ -159,3 +159,9 @@ keymap.set("n", '<leader>dn', function() local widgets = require "dap.ui.widgets
 keymap.set("n", '<leader>df', '<cmd>Telescope dap frames<cr>')
 keymap.set("n", '<leader>dh', '<cmd>Telescope dap commands<cr>')
 keymap.set("n", '<leader>de', function() require('telescope.builtin').diagnostics({default_text=":E:"}) end)
+
+
+keymap.set("n", "<C-h>", "<Cmd>TmuxNavigateLeft<CR>")
+keymap.set("n", "<C-j>", "<Cmd>TmuxNavigateDown<CR>")
+keymap.set("n", "<C-k>", "<Cmd>TmuxNavigateUp<CR>")
+keymap.set("n", "<C-l>", "<Cmd>TmuxNavigateRight<CR>")

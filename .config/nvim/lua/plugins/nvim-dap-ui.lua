@@ -110,7 +110,15 @@ return {
       name = 'My custom launch configuration',
       program = '${file}',
       -- ... more options, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings
-    }}
+    },
+     {
+             name= "Django (attach)",
+             type= "python",
+             request="attach",
+             django=true,
+              port= 54545,
+ }
+  }
 
     -- Add dap configurations based on your language/adapter settings
     -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
