@@ -54,3 +54,11 @@ vim.diagnostic.config({
   virtual_text = false,
   update_in_insert = false
 })
+
+vim.filetype.add({
+  pattern = {
+    [".*/%.git/config"] = "git_config",
+    [".*/%.git/COMMIT_EDITMSG"] = "gitcommit",
+    [".*/%.git/rebase%-merge/git%-rebase%-todo"] = "git_rebase",
+  },
+})

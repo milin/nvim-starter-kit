@@ -23,6 +23,14 @@ return {
     'hrsh7th/cmp-path',
     -- https://github.com/hrsh7th/cmp-cmdline
     'hrsh7th/cmp-cmdline',
+    {
+        "MattiasMTS/cmp-dbee",
+        dependencies = {
+          {"kndndrj/nvim-dbee"}
+        },
+        opts = {}, -- needed
+      },
+    
   },
   config = function()
     local cmp = require('cmp')
@@ -75,6 +83,7 @@ return {
         { name = "luasnip" }, -- snippets
         { name = "buffer" }, -- text within current buffer
         { name = "path" }, -- file system paths
+        { name = "cmp-dbee" },
       }),
       window = {
         -- Add borders to completions popups
