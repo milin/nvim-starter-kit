@@ -14,6 +14,9 @@ keymap.set("n", "gx", ":!open <c-r><c-a><CR>") -- open URL under cursor
 keymap.set("n", "<leader>u", ":ArgWrap<CR>") -- Arg wrap
 keymap.set("n", "<f9>", ":noh<CR>") -- Clear selection
 
+keymap.set("n", "<leader>j", ":%!jq<CR>")
+keymap.set("v", "<leader>j", ":%!jq<CR>")
+
 
 -- java
 -- keymap.set("n", "ss", ":TermExec cmd='/usr/jdk11/bin/jshell'<CR>") -- ToggleTerm Jshell 
