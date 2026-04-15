@@ -1,110 +1,100 @@
 -- LSP Support
 return {
-  'neovim/nvim-lspconfig',
-  event = 'VeryLazy',
+  "neovim/nvim-lspconfig",
+  event = "VeryLazy",
 
   dependencies = {
-    -- LSP Manager
-    'williamboman/mason.nvim',
-    'williamboman/mason-lspconfig.nvim',
-
-    -- Auto-install LSPs, linters, formatters, debuggers
-    'WhoIsSethDaniel/mason-tool-installer.nvim',
-
-    -- LSP progress UI
-    { 'j-hui/fidget.nvim', opts = {} },
-
-    -- Neovim Lua development (for Lua LSP)
-    'folke/neodev.nvim',
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    { "j-hui/fidget.nvim", opts = {} },
+    "folke/neodev.nvim",
+    "hrsh7th/cmp-nvim-lsp", -- make sure this exists
   },
 
   config = function()
     ---------------------------------------------------------------------------
-    -- Mason Setup
+    -- Setup
     ---------------------------------------------------------------------------
-    require('mason').setup()
+    require("mason").setup()
+    require("neodev").setup()
 
-    require('mason-lspconfig').setup({
+    ---------------------------------------------------------------------------
+    -- LSP install list
+    ---------------------------------------------------------------------------
+    require("mason-lspconfig").setup({
       ensure_installed = {
-        'bashls',
-        'cssls',
-        'html',
-        'gradle_ls',
-        'groovyls',
-        'lua_ls',
-        'jdtls',
-        'jsonls',
-        'lemminx',
-        'marksman',
-        'quick_lint_js',
-        'pylsp',
-        'yamlls',
-        'ts_ls',
+        "bashls",
+        "cssls",
+        "html",
+        "gradle_ls",
+        "groovyls",
+        "lua_ls",
+        "jdtls",
+        "jsonls",
+        "lemminx",
+        "marksman",
+        "quick_lint_js",
+        "ruff",       -- ✅ instead of ruff_lsp
+        "yamlls",
+        "ts_ls",      -- ✅ instead of tsserver
       },
     })
 
     ---------------------------------------------------------------------------
-    -- Mason Tool Installer Setup
+    -- Tool installer (non-LSP tools)
     ---------------------------------------------------------------------------
-    require('mason-tool-installer').setup({
+    require("mason-tool-installer").setup({
       ensure_installed = {
-        'java-debug-adapter',
-        'java-test',
+        "java-debug-adapter",
+        "java-test",
       },
+      run_on_start = true, -- ✅ FIXED (belongs here)
     })
 
-    -- Run MasonToolsInstall manually (because plugin loads VeryLazy)
-    vim.api.nvim_command('MasonToolsInstall')
-
     ---------------------------------------------------------------------------
-    -- LSP Defaults
+    -- LSP setup
     ---------------------------------------------------------------------------
-    local lspconfig = require('lspconfig')
-    local mason_lspconfig = require('mason-lspconfig')
+    local lspconfig = require("lspconfig")
+    local mason_lspconfig = require("mason-lspconfig")
 
-    local capabilities = require('cmp_nvim_lsp').default_capabilities()
+    local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
     local function on_attach(client, bufnr)
-      -- Add your keybindings here…
+      -- keymaps here if you want
     end
 
     ---------------------------------------------------------------------------
-    -- mason-lspconfig Handlers (NEW API, Neovim 0.11+)
+    -- Auto setup installed servers
     ---------------------------------------------------------------------------
-    mason_lspconfig.setup_handlers({
-
-      -- Default handler for *all* servers
-      function(server_name)
-        if server_name ~= 'jdtls' then
-          lspconfig[server_name].setup({
-            on_attach = on_attach,
-            capabilities = capabilities,
-          })
-        end
-      end,
-
-      -------------------------------------------------------------------------
-      -- Override specific LSPs below
-      -------------------------------------------------------------------------
-
-      -- LuaLS custom settings
-      ["lua_ls"] = function()
-        lspconfig.lua_ls.setup({
+    for _, server in ipairs(mason_lspconfig.get_installed_servers()) do
+      if server ~= "jdtls" and server ~= "lua_ls" then
+        lspconfig[server].setup({
           on_attach = on_attach,
           capabilities = capabilities,
-          settings = {
-            Lua = {
-              diagnostics = {
-                globals = { 'vim' },
-              },
-            },
-          },
         })
-      end,
+      end
+    end
+
+    ---------------------------------------------------------------------------
+    -- Custom overrides
+    ---------------------------------------------------------------------------
+
+    -- Lua
+    lspconfig.lua_ls.setup({
+      on_attach = on_attach,
+      capabilities = capabilities,
+      settings = {
+        Lua = {
+          diagnostics = {
+            globals = { "vim" },
+          },
+        },
+      },
     })
 
     ---------------------------------------------------------------------------
-    -- Global LSP UI settings
+    -- UI tweaks
     ---------------------------------------------------------------------------
     local floating = vim.lsp.util.open_floating_preview
     function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
@@ -112,7 +102,5 @@ return {
       opts.border = opts.border or "rounded"
       return floating(contents, syntax, opts, ...)
     end
-
   end,
 }
-
