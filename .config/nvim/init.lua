@@ -41,3 +41,4 @@ end
 require("core.options")
 require("core.keymaps")
 require("core.python_dap")
+require("core.autocmds")
