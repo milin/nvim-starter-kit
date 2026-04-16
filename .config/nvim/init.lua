@@ -23,6 +23,18 @@ require("lazy").setup("plugins", {
 })
 vim.opt.shellcmdflag = '-ci'
 vim.g.mason_python = "/Users/milindshakya/.pyenv/shims/python"
+--
+-- Fix for containerName userdata bug
+local orig = vim.lsp.util.symbols_to_items
+
+vim.lsp.util.symbols_to_items = function(symbols, bufnr)
+  for _, symbol in ipairs(symbols or {}) do
+    if type(symbol.containerName) ~= "string" then
+      symbol.containerName = tostring(symbol.containerName or "")
+    end
+  end
+  return orig(symbols, bufnr)
+end
 
 
 -- These modules are not loaded by lazy
