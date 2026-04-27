@@ -22,7 +22,7 @@ require("lazy").setup("plugins", {
   },
 })
 vim.opt.shellcmdflag = '-ci'
-vim.g.mason_python = "/Users/milindshakya/.pyenv/shims/python"
+vim.g.mason_python = "/Users/milind.shakya/development/nvim-starter-kit/neovim/bin/python"
 --
 -- Fix for containerName userdata bug
 local orig = vim.lsp.util.symbols_to_items

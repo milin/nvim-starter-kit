@@ -6,7 +6,7 @@ return {
 
   init = function()
     local pro_wiki = {
-      path = "/Users/milind.shakya/Library/CloudStorage/Box-Box/VimWiki/professional_development.wiki/",
+      path = "/Users/milind.shakya/Library/CloudStorage/GoogleDrive-milind.shakya@kraken.tech/My Drive/professional_development.wiki/",
       syntax = "markdown",
       ext = ".md",
     }
