@@ -112,12 +112,20 @@ return {
       -- ... more options, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings
     },
      {
-             name= "Django (attach)",
+             name= "Django (runserver)",
              type= "python",
              request="attach",
              django=true,
               port= 54545,
- }
+    },
+     {
+             name= "Django (tests)",
+             type= "python",
+             request="attach",
+             django=true,
+              port= 54546,
+      }
+
   }
 
     -- Add dap configurations based on your language/adapter settings
