@@ -81,9 +81,9 @@ return {
       sources = cmp.config.sources({
         { name = "nvim_lsp" }, -- lsp 
         { name = "luasnip" }, -- snippets
+        { name = "vim-dadbod-completion" },
         { name = "buffer" }, -- text within current buffer
         { name = "path" }, -- file system paths
-        { name = "cmp-dbee" },
       }),
       window = {
         -- Add borders to completions popups
